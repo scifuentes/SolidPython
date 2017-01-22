@@ -166,8 +166,10 @@ class union(OpenSCADTransformation):
     Creates a union of all its child nodes. This is the **sum** of all
     children.
     '''
-    def __init__(self):
+    def __init__(self, *args):
         OpenSCADTransformation.__init__(self, 'union', {})
+        if args:
+            self(args)
 
     def __add__(self, x):
         return self.add(x)
@@ -178,8 +180,10 @@ class intersection(OpenSCADTransformation):
     Creates the intersection of all child nodes. This keeps the
     **overlapping** portion
     '''
-    def __init__(self):
+    def __init__(self, *args):
         OpenSCADTransformation.__init__(self, 'intersection', {})
+        if args:
+            self(args)
 
     def __mul__(self, x):
         return self.add(x)
@@ -189,23 +193,29 @@ class difference(OpenSCADTransformation):
     '''
     Subtracts the 2nd (and all further) child nodes from the first one.
     '''
-    def __init__(self):
+    def __init__(self, *args):
         OpenSCADTransformation.__init__(self, 'difference', {})
+        if args:
+            self(args)
 
-    def __sub__(self,x):
+    def __sub__(self, x):
         return self.add(x)
 
 
 class hole(OpenSCADTransformation):
-    def __init__(self):
+    def __init__(self, *args):
         OpenSCADTransformation.__init__(self, 'hole', {})
         self.set_hole(True)
+        if args:
+            self(args)
 
 
 class part(OpenSCADTransformation):
-    def __init__(self):
+    def __init__(self, *args):
         OpenSCADTransformation.__init__(self, 'part', {})
         self.set_part_root(True)
+        if args:
+            self(args)
 
 
 class translate(OpenSCADTransformation):
@@ -300,8 +310,10 @@ class minkowski(OpenSCADTransformation):
     sum <http://www.cgal.org/Manual/latest/doc_html/cgal_manual/Minkowski_sum_3/Chapter_main.html>`__
     of child nodes.
     '''
-    def __init__(self):
+    def __init__(self, *args):
         OpenSCADTransformation.__init__(self, 'minkowski', {})
+        if args:
+            self(args)
 
 class offset(OpenSCADTransformation):
     '''
@@ -330,14 +342,17 @@ class offset(OpenSCADTransformation):
             raise ValueError("offset(): Must supply r or delta")
             OpenSCADTransformation.__init__(self, 'offset', kwargs)
 
+
 class hull(OpenSCADTransformation):
     '''
     Renders the `convex
     hull <http://www.cgal.org/Manual/latest/doc_html/cgal_manual/Convex_hull_2/Chapter_main.html>`__
     of child nodes.
     '''
-    def __init__(self):
+    def __init__(self, *args):
         OpenSCADTransformation.__init__(self, 'hull', {})
+        if args:
+            self(args)
 
 
 class render(OpenSCADTransformation):
