@@ -169,6 +169,9 @@ class union(OpenSCADTransformation):
     def __init__(self):
         OpenSCADTransformation.__init__(self, 'union', {})
 
+    def __add__(self, x):
+        return self.add(x)
+
 
 class intersection(OpenSCADTransformation):
     '''
@@ -178,6 +181,9 @@ class intersection(OpenSCADTransformation):
     def __init__(self):
         OpenSCADTransformation.__init__(self, 'intersection', {})
 
+    def __mul__(self, x):
+        return self.add(x)
+
 
 class difference(OpenSCADTransformation):
     '''
@@ -185,6 +191,9 @@ class difference(OpenSCADTransformation):
     '''
     def __init__(self):
         OpenSCADTransformation.__init__(self, 'difference', {})
+
+    def __sub__(self,x):
+        return self.add(x)
 
 
 class hole(OpenSCADTransformation):
