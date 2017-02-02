@@ -84,7 +84,7 @@ def object_mirrorCopy(self, axis='xyz' ): #also allows a vector
         if 'y' in axis:
             v[1]=1
         if 'z' in axis:
-            v[3]=1
+            v[2]=1
     else:
         v=axis
 
