@@ -71,6 +71,13 @@ def object_align(self, a1='center',a2='center',a3='center'):
     alignPos['front']=[0,-.5,0]
     alignPos['back']=[0,.5,0]
 
+    alignPos['z+']=[0,0,-.5]
+    alignPos['z-']=[0,0,.5]
+    alignPos['x+']=[-.5,0,0]
+    alignPos['x-']=[.5,0,0]
+    alignPos['y+']=[0,-.5,0]
+    alignPos['y-']=[0,.5,0]
+
     rAlign = [ax+ay+az for ax,ay,az in zip(alignPos[a1], alignPos[a2], alignPos[a3])]
     align = [a*s for a,s in zip(rAlign, self.getSize())]
     return self.center().translate(align)
