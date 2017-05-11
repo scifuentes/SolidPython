@@ -293,6 +293,7 @@ class OpenSCADObject(object):
         self.parent = None
         self.is_hole = False
         self.is_part_root = False
+        self.has_hole_children = False
 
     def set_hole(self, is_hole=True):
         self.is_hole = is_hole
